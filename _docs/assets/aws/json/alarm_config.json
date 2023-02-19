@@ -1,0 +1,12 @@
+aws cloudwatch put-metric-alarm --region us-east-1 
+    --alarm-name "HighCPUUtilization" 
+    --alarm-description "High CPU Utilization" 
+    --actions-enabled 
+    --alarm-actions "arn:aws:sns:us-east-1:803874075440:billing-alarm" 
+    --metric-name "CPUUtilization" 
+    --namespace AWS/EC2 --statistic "Average" 
+    --dimensions "Name=InstanceName,Value=demo" 
+    --period 60 
+    --evaluation-periods 60 
+    --threshold 40 
+    --comparison-operator "GreaterThanOrEqualToThreshold"
